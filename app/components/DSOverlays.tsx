@@ -10,10 +10,10 @@ export default function DSOverlays({ hasBooted }: DSOverlaysProps) {
       {/* Name animation */}
       <div style={{
         position: "absolute",
-        top: "12.6%",
-        left: "17%",
+        top: "10.6%",
+        left: "13%",
         width: "46.9%",
-        height: "32%",
+        height: "34%",
         zIndex: 65,
         display: "flex",
         alignItems: "center",
@@ -23,7 +23,7 @@ export default function DSOverlays({ hasBooted }: DSOverlaysProps) {
       }}>
         <span style={{
           fontFamily: "Coral Pixels, serif",
-          fontSize: "23px",
+          fontSize: "26px",
           fontWeight: "bold",
           whiteSpace: "nowrap",
           animation: "nameReveal 4s ease-in-out forwards",
