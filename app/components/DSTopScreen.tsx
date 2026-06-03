@@ -19,7 +19,7 @@ function HubBackButton({ onBack }: { onBack: () => void }) {
       onMouseLeave={() => setHovered(false)}
       style={{
         position: "absolute",
-        bottom: "-118%",   // adjust to your liking
+        bottom: "-118%",
         left: "46%",
         zIndex: 80,
         cursor: "pointer",
@@ -59,7 +59,6 @@ export default function DSTopScreen({ powered, selectedShow, photoIndex, onBack 
   const show = SHOWS[selectedShow];
   if (!show) return null;
 
-  // Shared container — always has black background to block icons beneath
   const containerStyle: React.CSSProperties = {
     position: "absolute",
     top: "14.6%",

@@ -60,7 +60,7 @@ export default function ResumeSection({ hasBooted }: ResumeSectionProps) {
 
   return (
     <>
-      {/* Headshot cycler — bottom left, unchanged */}
+      {/* Headshot cycler */}
       <div style={{
         position: "fixed",
         bottom: "0px",

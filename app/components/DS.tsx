@@ -138,7 +138,7 @@ export default function DS({ hasBooted, onBoot }: DSProps) {
       />
       <DSIcons powered={powered} onSelect={handleSelectShow} />
 
-      {/* 3DS Image — zIndex 50, sits above name (15) below screens (60+) */}
+      {/* 3DS Image */}
       <img
         src="/images/3DS-Portfolio.png"
         alt="3DS-Image"

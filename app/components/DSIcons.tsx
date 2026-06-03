@@ -3,7 +3,7 @@ import { useState } from "react";
 
 interface DSIconsProps {
   powered: boolean;
-  onSelect: (label: string) => void; // ← ADD
+  onSelect: (label: string) => void;
 }
 
 interface IconData {
