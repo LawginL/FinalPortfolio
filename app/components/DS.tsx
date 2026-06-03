@@ -94,19 +94,19 @@ export default function DS({ hasBooted, onBoot }: DSProps) {
             0% {
               opacity: 0;
               color: white;
-              transform: translate(128px, 0px) scale(0.5);
+              transform: translate(180px, 0px) scale(0.5);
               text-shadow: none;
             }
             78% {
               opacity: 1;
               color: #313131;
-              transform: translate(128px, 0px) scale(3.1);
+              transform: translate(180px, 0px) scale(3.1);
               text-shadow: 0 0 5px #5e5e5e, 0 0 10px #a8a8a8, 0 0 25px #ffffff, 0 0 50px rgba(255,255,255,0.8);
             }
             89% {
               opacity: 1;
               color: #313131;
-              transform: translate(128px, 0px) scale(3.1);
+              transform: translate(180px, 0px) scale(3.1);
               text-shadow: 0 0 5px #272727, 0 0 10px #a8a8a8, 0 0 25px #ffffff, 0 0 50px rgba(255,255,255,0.8);
             }
             100% {

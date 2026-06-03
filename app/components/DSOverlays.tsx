@@ -38,7 +38,7 @@ export default function DSOverlays({ hasBooted }: DSOverlaysProps) {
       <div style={{
         position: "absolute",
         top: "4.2%",
-        left: "-42%",
+        left: "-45.5%",
         width: "40%",
         height: "23.6%",
         zIndex: 65,
