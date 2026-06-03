@@ -21,9 +21,18 @@ export default function DS({ hasBooted, onBoot }: DSProps) {
 
   useEffect(() => {
     const updateScale = () => {
-      const heightScale = window.innerHeight / 1040;
-      const widthScale = window.innerWidth / 900;
-      setScale(Math.min(heightScale, widthScale, 1));
+      const viewportH = window.innerHeight;
+      const viewportW = window.innerWidth;
+
+      // translate-x-116 = 464px offset + ~650px DS image width
+      const contentWidth = 1114;
+      // 1040px image - 106px translate-y-26.5 upward shift + buffer
+      const contentHeight = 1000;
+
+      const heightScale = viewportH / contentHeight;
+      const widthScale = viewportW / contentWidth;
+
+      setScale(Math.min(heightScale, widthScale, 1) * 0.92);
     };
     updateScale();
     window.addEventListener("resize", updateScale);
@@ -65,7 +74,7 @@ export default function DS({ hasBooted, onBoot }: DSProps) {
       transform: `scale(${scale})`,
       transformOrigin: "center center",
     }}>
-      <div className="relative -translate-y-26.5 translate-x-116" style={{ display: "inline-block" }}>
+      <div className="relative -translate-y-34 translate-x-122" style={{ display: "inline-block" }}>
 
         <style>{`
           @import url('https://fonts.googleapis.com/css2?family=Coral+Pixels&family=VT323&display=swap');
@@ -153,7 +162,7 @@ export default function DS({ hasBooted, onBoot }: DSProps) {
         <img
           src="/images/3DS-Portfolio.png"
           alt="3DS-Image"
-          style={{ height: "1141px", width: "auto", position: "relative", zIndex: 50 }}
+          style={{ height: "1185px", width: "auto", position: "relative", zIndex: 50 }}
         />
 
         <DSScreens powered={powered} />

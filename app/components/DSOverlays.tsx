@@ -114,7 +114,7 @@ export default function DSOverlays({ hasBooted }: DSOverlaysProps) {
           color: "#ff9900",
           textShadow: "0 0 8px #585858, 0 0 6px #363636, 0 0 5px #000000, 0 0 60px rgba(255,255,255,0.8)",
           animation: "zipIn 1.5s ease-in-out",
-          animationDelay: "6.05s",
+          animationDelay: "6s",
           animationFillMode: "both",
         }}>
           West Texas A&M University
@@ -144,7 +144,7 @@ export default function DSOverlays({ hasBooted }: DSOverlaysProps) {
           color: "#ff9900",
           textShadow: "0 0 8px #1f1f1f, 0 0 6px #0e0e0e, 0 0 5px #000000, 0 0 60px rgba(255,255,255,0.8)",
           animation: "zipIn 1.5s ease-in-out",
-          animationDelay: "6.05s",
+          animationDelay: "6s",
           animationFillMode: "both",
         }}>
           {"Bachelor of Fine Arts in Musical Theater - SP2027\n    ~ Summa Cum Laude ~ - Minor in Computer Science\nBachelor of Science in Computer Science - Junior Standing\n"}
