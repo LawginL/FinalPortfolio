@@ -41,7 +41,7 @@ export default function DSStickers() {
           zIndex: 9999, borderRadius: "6px", transform: "rotateX(48deg) rotateZ(-39deg)",
           pointerEvents: "none", opacity: 0.95 }} />
 
-      <img src="/images/Skateboard_sticker-removebg-preview.png" alt="SB Board Sticker"
+      <img src="/images/skateboard_sticker-removebg-preview.png" alt="SB Sticker"
         style={{ position: "absolute", bottom: "34%", right: "19%", width: "110px", height: "auto",
           zIndex: 9999, borderRadius: "6px", transform: "rotateX(56deg) rotateZ(-20deg)",
           pointerEvents: "none", opacity: 0.95 }} />
