@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DSScreens from "./DSScreens";
 import DSIcons from "./DSIcons";
 import DSOverlays from "./DSOverlays";
@@ -14,13 +14,24 @@ interface DSProps {
 }
 
 export default function DS({ hasBooted, onBoot }: DSProps) {
-  // Add inside DS() function, alongside existing state
   const [selectedShow, setSelectedShow] = useState<string | null>(null);
   const [photoIndex, setPhotoIndex] = useState(0);
   const [powered, setPowered] = useState(false);
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    const updateScale = () => {
+      const heightScale = window.innerHeight / 1040;
+      const widthScale = window.innerWidth / 900;
+      setScale(Math.min(heightScale, widthScale, 1));
+    };
+    updateScale();
+    window.addEventListener("resize", updateScale);
+    return () => window.removeEventListener("resize", updateScale);
+  }, []);
 
   const handleSelectShow = (label: string) => {
-    console.log("Selected:", label); 
+    console.log("Selected:", label);
     setSelectedShow(label);
     setPhotoIndex(0);
   };
@@ -50,126 +61,127 @@ export default function DS({ hasBooted, onBoot }: DSProps) {
   };
 
   return (
-    <div className="relative -translate-y-11.5 translate-x-105" style={{ display: "inline-block" }}>
+    <div style={{
+      transform: `scale(${scale})`,
+      transformOrigin: "center center",
+    }}>
+      <div className="relative -translate-y-11.5 translate-x-105" style={{ display: "inline-block" }}>
 
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Coral+Pixels&family=VT323&display=swap');
-        @keyframes screenGlow {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.4; }
-        }
-        @keyframes powerBlink {
-          0%, 100% { filter: brightness(1) drop-shadow(0 0 8px rgba(255,255,255,1)); }
-          50% { filter: brightness(0.4) drop-shadow(0 0 2px rgba(255,255,255,0.2)); }
-        }
-        @keyframes powerGlow {
-          0%, 100% { filter: brightness(1) drop-shadow(0 0 6px rgba(255,255,255,0.9)); }
-          50% { filter: brightness(1) drop-shadow(0 0 3px rgba(255,255,255,0.4)); }
-        }
-        @keyframes Headshot+ResumeReveal {
-            0% { opacity: 0; }
-            100% { opacity: 1; } 
-        }
-        @keyframes nameReveal {
-          0% {
-            opacity: 0;
-            color: white;
-            transform: translate(40px, 0px) scale(0.5);
-            text-shadow: none;
+        <style>{`
+          @import url('https://fonts.googleapis.com/css2?family=Coral+Pixels&family=VT323&display=swap');
+          @keyframes screenGlow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
           }
-          78% {
-            opacity: 1;
-            color: #313131;
-            transform: translate(40px, 0px) scale(3.1);
-            text-shadow: 0 0 5px #5e5e5e, 0 0 10px #a8a8a8, 0 0 25px #ffffff, 0 0 50px rgba(255,255,255,0.8);
+          @keyframes powerBlink {
+            0%, 100% { filter: brightness(1) drop-shadow(0 0 8px rgba(255,255,255,1)); }
+            50% { filter: brightness(0.4) drop-shadow(0 0 2px rgba(255,255,255,0.2)); }
           }
-          89% {
-            opacity: 1;
-            color: #313131;
-            transform: translate(40px, 0px) scale(3.1);
-            text-shadow: 0 0 5px #272727, 0 0 10px #a8a8a8, 0 0 25px #ffffff, 0 0 50px rgba(255,255,255,0.8);
+          @keyframes powerGlow {
+            0%, 100% { filter: brightness(1) drop-shadow(0 0 6px rgba(255,255,255,0.9)); }
+            50% { filter: brightness(1) drop-shadow(0 0 3px rgba(255,255,255,0.4)); }
           }
-          100% {
-            opacity: 1;
-            color: #ffffff;
-            transform: translate(-900px, -205px) scale(5);
-            text-shadow: 0 0 4px #c4c4c4, 0 0 6px #888888, 0 0 5px #000000, 0 0 60px rgba(255,255,255,0.8);
+          @keyframes nameReveal {
+            0% {
+              opacity: 0;
+              color: white;
+              transform: translate(40px, 0px) scale(0.5);
+              text-shadow: none;
+            }
+            78% {
+              opacity: 1;
+              color: #313131;
+              transform: translate(40px, 0px) scale(3.1);
+              text-shadow: 0 0 5px #5e5e5e, 0 0 10px #a8a8a8, 0 0 25px #ffffff, 0 0 50px rgba(255,255,255,0.8);
+            }
+            89% {
+              opacity: 1;
+              color: #313131;
+              transform: translate(40px, 0px) scale(3.1);
+              text-shadow: 0 0 5px #272727, 0 0 10px #a8a8a8, 0 0 25px #ffffff, 0 0 50px rgba(255,255,255,0.8);
+            }
+            100% {
+              opacity: 1;
+              color: #ffffff;
+              transform: translate(-900px, -205px) scale(5);
+              text-shadow: 0 0 4px #c4c4c4, 0 0 6px #888888, 0 0 5px #000000, 0 0 60px rgba(255,255,255,0.8);
+            }
           }
-        }
-        @keyframes quoteReveal {
-          0% { opacity: 0; transform: scale(0.2); }
-          100% { opacity: 1; transform: scale(1); }
-        }
-        @keyframes IconLoad {
-          0% {
-            opacity: 0;
-            filter: drop-shadow(0 0 6px rgba(255,255,255,0.9));
-            transform: translateY(0px) scale(0.2);
+          @keyframes quoteReveal {
+            0% { opacity: 0; transform: scale(0.2); }
+            100% { opacity: 1; transform: scale(1); }
           }
-          80% {
-            opacity: 0.95;
-            filter: drop-shadow(0 0 6px rgba(255,255,255,0.9));
-            transform: translateY(-5px) scale(1);
+          @keyframes IconLoad {
+            0% {
+              opacity: 0;
+              filter: drop-shadow(0 0 6px rgba(255,255,255,0.9));
+              transform: translateY(0px) scale(0.2);
+            }
+            80% {
+              opacity: 0.95;
+              filter: drop-shadow(0 0 6px rgba(255,255,255,0.9));
+              transform: translateY(-5px) scale(1);
+            }
+            85% {
+              opacity: 0.95;
+              filter: drop-shadow(0 0 6px rgba(255,255,255,0.9));
+              transform: translateY(-10px) scale(1);
+            }
+            92% {
+              opacity: 1;
+              filter: drop-shadow(0 0 6px rgba(255,255,255,0.9));
+              transform: translateY(16px) scale(1);
+            }
+            100% {
+              opacity: 1;
+              filter: drop-shadow(0 0 6px rgba(255,255,255,0.9));
+              transform: translateY(0px) scale(1);
+            }
           }
-          85% {
-            opacity: 0.95;
-            filter: drop-shadow(0 0 6px rgba(255,255,255,0.9));
-            transform: translateY(-10px) scale(1);
-          }
-          92% {
-            opacity: 1;
-            filter: drop-shadow(0 0 6px rgba(255,255,255,0.9));
-            transform: translateY(16px) scale(1);
-          }
-          100% {
-            opacity: 1;
-            filter: drop-shadow(0 0 6px rgba(255,255,255,0.9));
-            transform: translateY(0px) scale(1);
-          }
-        }
-      `}</style>
+        `}</style>
 
-      <DSOverlays hasBooted={hasBooted} />
-      <DSTopScreen 
-        powered={powered} 
-        selectedShow={selectedShow} 
-        photoIndex={photoIndex} 
-        onBack={handleBack} 
-      />
-      <DSIcons powered={powered} onSelect={handleSelectShow} />
+        <DSOverlays hasBooted={hasBooted} />
+        <DSTopScreen
+          powered={powered}
+          selectedShow={selectedShow}
+          photoIndex={photoIndex}
+          onBack={handleBack}
+        />
+        <DSIcons powered={powered} onSelect={handleSelectShow} />
 
-      {/* 3DS Image */}
-      <img
-        src="/images/3DS-Portfolio.png"
-        alt="3DS-Image"
-        style={{ height: "1040px", width: "auto", position: "relative", zIndex: 50 }}
-      />
+        {/* 3DS Image */}
+        <img
+          src="/images/3DS-Portfolio.png"
+          alt="3DS-Image"
+          style={{ height: "1040px", width: "auto", position: "relative", zIndex: 50 }}
+        />
 
-      <DSScreens powered={powered} />
-      <DSDPad powered={powered} selectedShow={selectedShow} onPrev={handlePrev} onNext={handleNext} />
-      <DSStickers />
+        <DSScreens powered={powered} />
+        <DSDPad powered={powered} selectedShow={selectedShow} onPrev={handlePrev} onNext={handleNext} />
+        <DSStickers />
 
-      {/* Power Icon */}
-      <img
-        src="/images/clker-free-vector-images-power-297018.svg"
-        alt="Power Button"
-        onClick={handlePower}
-        style={{
-          position: "absolute",
-          bottom: "14.8%",
-          right: "20.6%",
-          width: "30px",
-          height: "20px",
-          zIndex: 9999,
-          cursor: "pointer",
-          transform: "perspective(390px) rotateZ(-5deg)",
-          filter: "invert(1)",
-          animation: powered
-            ? "powerGlow 2s ease-in-out infinite"
-            : "powerBlink 2s ease-in-out infinite"
-        }}
-      />
+        {/* Power Icon */}
+        <img
+          src="/images/clker-free-vector-images-power-297018.svg"
+          alt="Power Button"
+          onClick={handlePower}
+          style={{
+            position: "absolute",
+            bottom: "14.8%",
+            right: "20.6%",
+            width: "30px",
+            height: "20px",
+            zIndex: 9999,
+            cursor: "pointer",
+            transform: "perspective(390px) rotateZ(-5deg)",
+            filter: "invert(1)",
+            animation: powered
+              ? "powerGlow 2s ease-in-out infinite"
+              : "powerBlink 2s ease-in-out infinite"
+          }}
+        />
 
+      </div>
     </div>
   );
 }

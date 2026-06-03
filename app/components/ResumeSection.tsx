@@ -56,16 +56,31 @@ function HeadshotCycler() {
 }
 
 export default function ResumeSection({ hasBooted }: ResumeSectionProps) {
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    const updateScale = () => {
+      const heightScale = window.innerHeight / 1040;
+      const widthScale = window.innerWidth / 900;
+      setScale(Math.min(heightScale, widthScale, 1));
+    };
+    updateScale();
+    window.addEventListener("resize", updateScale);
+    return () => window.removeEventListener("resize", updateScale);
+  }, []);
+
   if (!hasBooted) return null;
 
   return (
     <>
-      {/* Headshot cycler */}
+      {/* Headshot cycler — anchored bottom left */}
       <div style={{
         position: "fixed",
         bottom: "0px",
         left: "0px",
         zIndex: 100,
+        transformOrigin: "bottom left",
+        transform: `scale(${scale})`,
         animation: "zipIn 1.5s ease-in-out",
         animationDelay: "5.65s",
         animationFillMode: "both",
@@ -73,20 +88,22 @@ export default function ResumeSection({ hasBooted }: ResumeSectionProps) {
         <HeadshotCycler />
       </div>
 
-      {/* Resume links */}
+      {/* Resume links — anchored top left */}
       <div style={{
         position: "fixed",
         top: "12%",
-        left: "2.15%", 
+        left: "2.15%",
         display: "flex",
         flexDirection: "column",
         zIndex: 100,
+        transformOrigin: "top left",
+        transform: `scale(${scale})`,
         animation: "zipIn 1.5s ease-in-out",
         animationDelay: "4.3s",
         animationFillMode: "both",
       }}>
         {RESUMES.map(r => (
-        <a
+          <a
             key={r.label}
             href={r.file}
             target="_blank"
