@@ -35,7 +35,7 @@ body {
 
 @keyframes zipIn {
   0% {
-    transform: translate(-820px, 0px) rotateZ(8deg);
+    transform: translate(-900px, 0px) rotateZ(8deg);
   }
   65% {
     transform: translate(18px, 0px) rotateZ(-2deg);

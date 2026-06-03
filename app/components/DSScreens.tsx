@@ -24,7 +24,7 @@ export default function DSScreens({ powered }: DSScreensProps) {
       <div style={{
         position: "absolute",
         top: "57.3%",
-        left: "30.2%",
+        left: "30%",
         width: "40%",
         height: "23.6%",
         zIndex: 60,

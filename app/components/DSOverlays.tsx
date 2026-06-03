@@ -10,8 +10,8 @@ export default function DSOverlays({ hasBooted }: DSOverlaysProps) {
       {/* Name animation */}
       <div style={{
         position: "absolute",
-        top: "14.6%",
-        left: "23.1%",
+        top: "12.6%",
+        left: "17%",
         width: "46.9%",
         height: "32%",
         zIndex: 65,
@@ -37,7 +37,7 @@ export default function DSOverlays({ hasBooted }: DSOverlaysProps) {
       {/* Quote */}
       <div style={{
         position: "absolute",
-        top: "5%",
+        top: "4.2%",
         left: "-42%",
         width: "40%",
         height: "23.6%",

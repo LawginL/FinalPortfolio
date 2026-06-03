@@ -91,8 +91,8 @@ export default function ResumeSection({ hasBooted }: ResumeSectionProps) {
       {/* Resume links — anchored top left */}
       <div style={{
         position: "fixed",
-        top: "12%",
-        left: "2.15%",
+        top: "11%",
+        left: "4.15%",
         display: "flex",
         flexDirection: "column",
         zIndex: 100,

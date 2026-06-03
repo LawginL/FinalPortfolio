@@ -65,7 +65,7 @@ export default function DS({ hasBooted, onBoot }: DSProps) {
       transform: `scale(${scale})`,
       transformOrigin: "center center",
     }}>
-      <div className="relative -translate-y-11.5 translate-x-105" style={{ display: "inline-block" }}>
+      <div className="relative -translate-y-26.5 translate-x-116" style={{ display: "inline-block" }}>
 
         <style>{`
           @import url('https://fonts.googleapis.com/css2?family=Coral+Pixels&family=VT323&display=swap');
@@ -85,19 +85,19 @@ export default function DS({ hasBooted, onBoot }: DSProps) {
             0% {
               opacity: 0;
               color: white;
-              transform: translate(40px, 0px) scale(0.5);
+              transform: translate(128px, 0px) scale(0.5);
               text-shadow: none;
             }
             78% {
               opacity: 1;
               color: #313131;
-              transform: translate(40px, 0px) scale(3.1);
+              transform: translate(128px, 0px) scale(3.1);
               text-shadow: 0 0 5px #5e5e5e, 0 0 10px #a8a8a8, 0 0 25px #ffffff, 0 0 50px rgba(255,255,255,0.8);
             }
             89% {
               opacity: 1;
               color: #313131;
-              transform: translate(40px, 0px) scale(3.1);
+              transform: translate(128px, 0px) scale(3.1);
               text-shadow: 0 0 5px #272727, 0 0 10px #a8a8a8, 0 0 25px #ffffff, 0 0 50px rgba(255,255,255,0.8);
             }
             100% {
@@ -153,7 +153,7 @@ export default function DS({ hasBooted, onBoot }: DSProps) {
         <img
           src="/images/3DS-Portfolio.png"
           alt="3DS-Image"
-          style={{ height: "1040px", width: "auto", position: "relative", zIndex: 50 }}
+          style={{ height: "1141px", width: "auto", position: "relative", zIndex: 50 }}
         />
 
         <DSScreens powered={powered} />
